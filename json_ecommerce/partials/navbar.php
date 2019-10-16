@@ -26,6 +26,9 @@
       if (!isset($_SESSION['email'])) {
         echo '
           <li class="nav-item" >
+            <a class="nav-link" href="./gallery.php">Gallery</a>
+          </li>
+          <li class="nav-item" >
             <a class="nav-link" href="./register.php">Register</a>
           </li>
           <li class="nav-item">
@@ -37,6 +40,10 @@
         echo '
           <li class="nav-item">
             <p class="nav-link">Welcome, '. $_SESSION['first'] . '!</p>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="./add_product.php">Add Product</a>
           </li>
 
           <li class="nav-item">

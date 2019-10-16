@@ -1,0 +1,21 @@
+[
+    
+    {
+        "name": "dog",
+        "price": "10000",
+        "description": "cute dog",
+        "image": "..\/assets\/images\/uploaded_dog.jpg"
+    },
+    {
+        "name": "Sea Doggo",
+        "price": "200000",
+        "description": "Sea bork",
+        "image": "..\/assets\/images\/uploaded_sea_doggo.jpg"
+    },
+    {
+        "name": "another doggo",
+        "price": "11111",
+        "description": "doggo",
+        "image": "..\/assets\/images\/uploaded_dog.jpg"
+    }
+]

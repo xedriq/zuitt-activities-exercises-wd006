@@ -29,7 +29,7 @@
 						
 						
 						
-						<input type="submit" value="Log In" class="btn btn-info mt-3 w-50 mx-auto">
+						<input type="submit" value="Log In" class="btn btn-primary mt-3 w-50 mx-auto">
 					</form>			
 				</div>
 				<div class="card-footer">

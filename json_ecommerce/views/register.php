@@ -46,7 +46,7 @@
 							<input type="password" name="confirmPassword" id="password2" class="form-control" required>
 						</div>
 						
-						<input type="submit" value="Register" class="btn btn-info mt-3 w-50 mx-auto">
+						<input type="submit" value="Register" class="btn btn-primary mt-3 w-50 mx-auto">
 					</form>			
 				</div>
 				<div class="card-footer">
@@ -57,4 +57,5 @@
 		</div>
 	</div>
 </div>
-<?php require '../partials/footer.php' ?>
+
+<?php require '../partials/footer.php'; ?>

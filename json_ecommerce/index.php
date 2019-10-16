@@ -22,7 +22,7 @@
 
 		// the header function will redirect to the indicated path.
 
-		header('Location: ./views/register.php')
+		header('Location: ./views/gallery.php')
 
 	?>
 </body>

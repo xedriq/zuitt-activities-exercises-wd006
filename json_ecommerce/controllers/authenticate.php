@@ -28,7 +28,6 @@ foreach ($accounts as $account) {
 		// syntax: $_SESSION['session_variable'] = value;
 		$_SESSION['email'] = $email;
 		$_SESSION['first'] = $account['firstName'];
-		var_dump($_SESSION['first']);
 		
 		$flag = true;
 	}
@@ -47,7 +46,7 @@ foreach ($accounts as $account) {
 
 if ($flag) {
 	echo "Login Successful!";
-	header('Location: ../views/about.php');
+	header('Location: ../views/gallery.php');
 } else {
 	echo "Invalid credentials";
 }
