@@ -1,0 +1,56 @@
+// retrieve the song title(songs table) and album name(albums table)
+SELECT title, name FROM albums JOIN songs ON (albums.id=songs.album_id);
++------------------+----------------+
+| title            | name           |
++------------------+----------------+
+| KUNDIMAN         | Trip           |
+| Kisap Mata       | Trip           |
+| Without U        | Good Man       |
+| Life Goes On     | All Eyez on Me |
+| 1st of Tha Month | E. 1999        |
+| Talk             | Free Spirit    |
+| gangnam style    | Psy 6          |
++------------------+----------------+
+
+// JOIN removes the records that does not satisfy the join condition ON
+
+// retrieve the artist names and the album names of that artist (join artists and albums)
+SELECT artists.name, albums.name FROM artists JOIN albums ON (artists.id=albums.artist_id);
++------------------------+----------------+
+| name                   | name           |
++------------------------+----------------+
+| Psy                    | Psy 6          |
+| Rivermaya              | Trip           |
+| Neyo                   | Good Man       |
+| Tupac Shakur           | All Eyez on Me |
+| Bone Thugs and Harmony | E. 1999        |
+| Khalid                 | Free Spirit    |
+| Ed Sheeran             | X              |
++------------------------+----------------+
+
+
+// what do you want to retrieve? artists(name), albums(name)
+// what is the relationship between tables to join? albums.artist_id=artists.id
+// 
+
+
+OUTER JOINS
+outer joins let some rows that do not have matches on the other table to contain null values
+	
+	LEFT JOIN - will not remove the records form the table on the left(the first one declared) without a match. instead, it assigns a null value for the fields from the other table
+
+	SELECT artists.name, albums.name FROM artists LEFT JOIN albums ON (artists.id=albums.artist_id);
+	+------------------------+----------------+
+	| name                   | name           |
+	+------------------------+----------------+
+	| Rivermaya              | Trip           |
+	| Neyo                   | Good Man       |
+	| Tupac Shakur           | All Eyez on Me |
+	| Bone Thugs and Harmony | E. 1999        |
+	| Khalid                 | Free Spirit    |
+	| Ed Sheeran             | X              |
+	| Psy                    | Psy 6          |
+	| eminem                 | NULL           |
+	| justin timberlake      | NULL           |
+	| bamboo                 | NULL           |
+	+------------------------+----------------+

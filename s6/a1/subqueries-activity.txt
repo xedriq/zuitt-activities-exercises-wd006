@@ -1,0 +1,128 @@
+MariaDB [movies_db]> use restaurant_db;
+Database changed
+MariaDB [restaurant_db]> SHOW TABLES;
++-------------------------+
+| Tables_in_restaurant_db |
++-------------------------+
+| accounts                |
+| categories              |
+| items                   |
+| orders                  |
+| orders_items            |
+| roles                   |
++-------------------------+
+6 rows in set (0.01 sec)
+
+MariaDB [restaurant_db]> SELECT * FROM items;
++----+--------------------+-------+----------+
+| id | name               | price | category |
++----+--------------------+-------+----------+
+|  1 | Hamburgers         |    60 |        1 |
+|  2 | Cheeseburger       |    75 |        1 |
+|  3 | Megaburger         |   150 |        1 |
+|  4 | 1 pc Fried Chicken |    80 |        2 |
+|  5 | 2 pc Fried Chicken |   135 |        2 |
+|  6 | Burger Steak       |    90 |        2 |
+|  7 | Cheese Cake        |   120 |        3 |
+|  8 | Halo Halo          |    50 |        3 |
+|  9 | Turon              |    20 |        3 |
+| 10 | Extra Rice         |    15 |        4 |
+| 11 | Soup               |    30 |        4 |
++----+--------------------+-------+----------+
+11 rows in set (0.01 sec)
+
+MariaDB [restaurant_db]> SELECT * FROM items WHERE name LIKE 'B%';
++----+--------------+-------+----------+
+| id | name         | price | category |
++----+--------------+-------+----------+
+|  6 | Burger Steak |    90 |        2 |
++----+--------------+-------+----------+
+1 row in set (0.00 sec)
+
+MariaDB [restaurant_db]> SELECT * FROM accounts;
++----+--------------------+--------------+--------------+---------------+------+
+| id | name               | address      | username     | password      | role |
++----+--------------------+--------------+--------------+---------------+------+
+|  2 | boy logro          | manila       | pingpingping | yumyumyum     |    1 |
+|  3 | alan beraquit      | rizal        | stmatthew    | alanpassword  |    2 |
+|  4 | peejay saracho     | pasay        | pjsaracho    | butikingpasay |    2 |
+|  5 | alex mena          | san juan     | alextheman   | alexpassword  |    2 |
+|  6 | cedrick tabares    | quezon city  | cedie        | cediepassword |    1 |
+|  7 | charlotte hofilena | bacolod city | kaloy        | kaloypassword |    1 |
+|  8 | vinz dy            | quezon city  | vinz         | vinzpassword  |    2 |
+|  9 | zaki tabares       | sta. rosa    | zaki         | zakipassword  |    2 |
+| 10 | john baltazar      | media city   | john         | johnpassword  |    2 |
++----+--------------------+--------------+--------------+---------------+------+
+9 rows in set (0.00 sec)
+
+MariaDB [restaurant_db]> SELECT name FROM accounts WHERE name LIKE '_o%'
+    -> ;
++---------------+
+| name          |
++---------------+
+| boy logro     |
+| john baltazar |
++---------------+
+2 rows in set (0.00 sec)
+
+MariaDB [restaurant_db]> SELECT name,address FROM accounts WHERE address LIKE '%y';
++--------------------+--------------+
+| name               | address      |
++--------------------+--------------+
+| peejay saracho     | pasay        |
+| cedrick tabares    | quezon city  |
+| charlotte hofilena | bacolod city |
+| vinz dy            | quezon city  |
+| john baltazar      | media city   |
++--------------------+--------------+
+5 rows in set (0.00 sec)
+
+MariaDB [restaurant_db]> SELECT * FROM items ORDER BY price DESC;
++----+--------------------+-------+----------+
+| id | name               | price | category |
++----+--------------------+-------+----------+
+|  3 | Megaburger         |   150 |        1 |
+|  5 | 2 pc Fried Chicken |   135 |        2 |
+|  7 | Cheese Cake        |   120 |        3 |
+|  6 | Burger Steak       |    90 |        2 |
+|  4 | 1 pc Fried Chicken |    80 |        2 |
+|  2 | Cheeseburger       |    75 |        1 |
+|  1 | Hamburgers         |    60 |        1 |
+|  8 | Halo Halo          |    50 |        3 |
+| 11 | Soup               |    30 |        4 |
+|  9 | Turon              |    20 |        3 |
+| 10 | Extra Rice         |    15 |        4 |
++----+--------------------+-------+----------+
+11 rows in set (0.00 sec)
+
+MariaDB [restaurant_db]> SELECT * FROM accounts ORDER BY name;
++----+--------------------+--------------+--------------+---------------+------+
+| id | name               | address      | username     | password      | role |
++----+--------------------+--------------+--------------+---------------+------+
+|  3 | alan beraquit      | rizal        | stmatthew    | alanpassword  |    2 |
+|  5 | alex mena          | san juan     | alextheman   | alexpassword  |    2 |
+|  2 | boy logro          | manila       | pingpingping | yumyumyum     |    1 |
+|  6 | cedrick tabares    | quezon city  | cedie        | cediepassword |    1 |
+|  7 | charlotte hofilena | bacolod city | kaloy        | kaloypassword |    1 |
+| 10 | john baltazar      | media city   | john         | johnpassword  |    2 |
+|  4 | peejay saracho     | pasay        | pjsaracho    | butikingpasay |    2 |
+|  8 | vinz dy            | quezon city  | vinz         | vinzpassword  |    2 |
+|  9 | zaki tabares       | sta. rosa    | zaki         | zakipassword  |    2 |
++----+--------------------+--------------+--------------+---------------+------+
+9 rows in set (0.00 sec)
+
+MariaDB [restaurant_db]> SELECT name FROM accounts ORDER BY name;
++--------------------+
+| name               |
++--------------------+
+| alan beraquit      |
+| alex mena          |
+| boy logro          |
+| cedrick tabares    |
+| charlotte hofilena |
+| john baltazar      |
+| peejay saracho     |
+| vinz dy            |
+| zaki tabares       |
++--------------------+
+9 rows in set (0.01 sec)

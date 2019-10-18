@@ -1,0 +1,184 @@
+//
+
+
+SELECT * FROM pets;
++----+----------+---------+---------+------+
+| id | name     | owner   | species | sex  |
++----+----------+---------+---------+------+
+|  1 | Syke     | Vinz    | dog     | m    |
+|  2 | China    | Luis    | dog     | f    |
+|  3 | Rocky    | Cedrick | dog     | m    |
+|  4 | Pussyket | Charly  | cat     | f    |
+|  5 | Buffy    | Harold  | cat     | f    |
+|  6 | Bowser   | Diane   | cat     | m    |
++----+----------+---------+---------+------+
+
+
+// select all pet names that starts with the letter B
+SELECT * FROM pets WHERE name LIKE 'b%';
++----+--------+--------+---------+------+
+| id | name   | owner  | species | sex  |
++----+--------+--------+---------+------+
+|  5 | Buffy  | Harold | cat     | f    |
+|  6 | Bowser | Diane  | cat     | m    |
++----+--------+--------+---------+------+
+
+
+// selects all pet names that end with y
+SELECT * FROM pets WHERE name LIKE '%y';
++----+-------+---------+---------+------+
+| id | name  | owner   | species | sex  |
++----+-------+---------+---------+------+
+|  3 | Rocky | Cedrick | dog     | m    |
+|  5 | Buffy | Harold  | cat     | f    |
++----+-------+---------+---------+------+
+
+
+// selects all pet names that has w in name
+SELECT * FROM pets WHERE name LIKE '%w%';
++----+--------+-------+---------+------+
+| id | name   | owner | species | sex  |
++----+--------+-------+---------+------+
+|  6 | Bowser | Diane | cat     | m    |
++----+--------+-------+---------+------+
+
+
+// retrieve all owner names that has letter e as it's second letter
+SELECT * FROM pets WHERE owner LIKE '_e%';
++----+-------+---------+---------+------+
+| id | name  | owner   | species | sex  |
++----+-------+---------+---------+------+
+|  3 | Rocky | Cedrick | dog     | m    |
++----+-------+---------+---------+------+
+
+// select all pet names with 5 letters
+SELECT * FROM pets WHERE name LIKE '_____';
++----+-------+---------+---------+------+
+| id | name  | owner   | species | sex  |
++----+-------+---------+---------+------+
+|  2 | China | Luis    | dog     | f    |
+|  3 | Rocky | Cedrick | dog     | m    |
+|  5 | Buffy | Harold  | cat     | f    |
++----+-------+---------+---------+------+
+
+
+// BINARY makes the subquery case sensitive
+SELECT * FROM pets WHERE name LIKE BINARY 'b%';
+Empty set (0.00 sec)
+
+MariaDB [(none)]> create database movies_db;
+Query OK, 1 row affected (0.01 sec)
+
+
+
+MariaDB [(none)]> use movies_db;
+Database changed
+MariaDB [movies_db]> CREATE TABLE movie_casts (
+    -> id INT NOT NULL AUTO_INCREMENT,
+    -> title VARCHAR(255) NOT NULL,
+    -> year YEAR(4) NOT NULL,
+    -> star VARCHAR(255) NOT NULL,
+    -> PRIMARY KEY(id)
+    -> );
+Query OK, 0 rows affected (0.26 sec)
+
+MariaDB [movies_db]> DESCRIBE movie_casts;
++-------+--------------+------+-----+---------+----------------+
+| Field | Type         | Null | Key | Default | Extra          |
++-------+--------------+------+-----+---------+----------------+
+| id    | int(11)      | NO   | PRI | NULL    | auto_increment |
+| title | varchar(255) | NO   |     | NULL    |                |
+| year  | year(4)      | NO   |     | NULL    |                |
+| star  | varchar(255) | NO   |     | NULL    |                |
++-------+--------------+------+-----+---------+----------------+
+4 rows in set (0.00 sec)
+
+MariaDB [movies_db]> INSERT INTO movie_casts(title,year,star)
+    -> VALUES ('Star Wars', 1977, 'Carrie Fisher');
+Query OK, 1 row affected (0.05 sec)
+
+MariaDB [movies_db]> INSERT INTO movie_casts(title,year,star) VALUES ('Star Wars', 2015, 'Carrie Fisher');
+Query OK, 1 row affected (0.05 sec)
+
+MariaDB [movies_db]> INSERT INTO movie_casts(title,year,star) VALUES ('Star Wars', 2015, 'Daisy Ridley');
+Query OK, 1 row affected (0.03 sec)
+
+MariaDB [movies_db]> INSERT INTO movie_casts(title,year,star) VALUES ('Star Wars', 1977, 'Harrison Ford');
+Query OK, 1 row affected (0.05 sec)
+
+MariaDB [movies_db]> INSERT INTO movie_casts(title,year,star) VALUES ('Star Wars', 2015, 'Harrison Ford');
+Query OK, 1 row affected (0.04 sec)
+
+MariaDB [movies_db]> select * from movie_casts;
++----+-----------+------+---------------+
+| id | title     | year | star          |
++----+-----------+------+---------------+
+|  1 | Star Wars | 1977 | Carrie Fisher |
+|  2 | Star Wars | 2015 | Carrie Fisher |
+|  3 | Star Wars | 2015 | Daisy Ridley  |
+|  4 | Star Wars | 1977 | Harrison Ford |
+|  5 | Star Wars | 2015 | Harrison Ford |
++----+-----------+------+---------------+
+5 rows in set (0.00 sec)
+
+MariaDB [movies_db]> SELECT * FROM movie_casts ORDER BY star, year;
++----+-----------+------+---------------+
+| id | title     | year | star          |
++----+-----------+------+---------------+
+|  1 | Star Wars | 1977 | Carrie Fisher |
+|  2 | Star Wars | 2015 | Carrie Fisher |
+|  3 | Star Wars | 2015 | Daisy Ridley  |
+|  4 | Star Wars | 1977 | Harrison Ford |
+|  5 | Star Wars | 2015 | Harrison Ford |
++----+-----------+------+---------------+
+5 rows in set (0.00 sec)
+
+MariaDB [movies_db]> SELECT * FROM movie_casts ORDER BY year;
++----+-----------+------+---------------+
+| id | title     | year | star          |
++----+-----------+------+---------------+
+|  1 | Star Wars | 1977 | Carrie Fisher |
+|  4 | Star Wars | 1977 | Harrison Ford |
+|  2 | Star Wars | 2015 | Carrie Fisher |
+|  3 | Star Wars | 2015 | Daisy Ridley  |
+|  5 | Star Wars | 2015 | Harrison Ford |
++----+-----------+------+---------------+
+5 rows in set (0.00 sec)
+
+MariaDB [movies_db]> SELECT * FROM movie_casts ORDER BY year DESC;
++----+-----------+------+---------------+
+| id | title     | year | star          |
++----+-----------+------+---------------+
+|  2 | Star Wars | 2015 | Carrie Fisher |
+|  3 | Star Wars | 2015 | Daisy Ridley  |
+|  5 | Star Wars | 2015 | Harrison Ford |
+|  1 | Star Wars | 1977 | Carrie Fisher |
+|  4 | Star Wars | 1977 | Harrison Ford |
++----+-----------+------+---------------+
+5 rows in set (0.00 sec)
+
+SELECT title,year,star FROM movie_casts WHERE title='Star Wars' AND year=2015;
++-----------+------+---------------+
+| title     | year | star          |
++-----------+------+---------------+
+| Star Wars | 2015 | Carrie Fisher |
+| Star Wars | 2015 | Daisy Ridley  |
+| Star Wars | 2015 | Harrison Ford |
++-----------+------+---------------+
+
+SELECT DISTINCT title,year,star FROM movie_casts WHERE title='Star Wars' AND year=2015;
++-----------+------+---------------+
+| title     | year | star          |
++-----------+------+---------------+
+| Star Wars | 2015 | Carrie Fisher |
+| Star Wars | 2015 | Daisy Ridley  |
+| Star Wars | 2015 | Harrison Ford |
++-----------+------+---------------+
+
+SELECT DISTINCT title,year FROM movie_casts WHERE title='Star Wars' AND year=2015;
++-----------+------+
+| title     | year |
++-----------+------+
+| Star Wars | 2015 |
++-----------+------+
+
