@@ -57,23 +57,6 @@
  					<p class="card-text"><?= $product['description'];?></p>
  					<p class="card-text">Php <?= $product['price']; ?></p>
  				</div>
- 				<div class="card-footer">
- 					<form action="../controllers/update_cart.php" method="POST">
- 						<div class="form-control">
- 							<input type="number" name="item_quantity" class="form-control form-control-sm" min="1" max="3" value="1">
- 							<input type="hidden" name="item_id" value= <?= $product['id'] ?> >
- 						</div>
- 						<button class="btn btn-primary btn-block add-to-cart">Add to Cart</button> 						
- 					</form>
- 					<?php 
-	 					if ($_SESSION['user']['role_id'] == 1 ) {
-	 						echo '<a href="../controllers/delete_item.php?id='. $product['id'] .'" class="btn btn-danger btn-block mt-3">Delete Item</a>';
-
-	 						echo '<a href="./edit_form.php?id='. $product['id'] .'" class="btn btn-info btn-block mt-3">Update Item</a>';
-	 					}
- 					?>
- 					
- 				</div>
  			</div>
  		</div>
 	 	<?php } ?>

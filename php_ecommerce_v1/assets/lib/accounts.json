@@ -1,0 +1,26 @@
+[
+    {
+        "firstName": "CEDRICK",
+        "lastName": "TABARES",
+        "email": "ced@sample.com",
+        "password": "d33fef58bedd39dc1c2d38f16305b10010e9058e"
+    },
+    {
+        "firstName": "charlotte",
+        "lastName": "hofilena",
+        "email": "charlotte@mail.com",
+        "password": "d33fef58bedd39dc1c2d38f16305b10010e9058e"
+    },
+    {
+        "firstName": "john",
+        "lastName": "doe",
+        "email": "john@sample.com",
+        "password": "3d4f2bf07dc1be38b20cd6e46949a1071f9d0e3d"
+    },
+    {
+        "firstName": "jane",
+        "lastName": "doe",
+        "email": "jane@gmail.com",
+        "password": "6216f8a75fd5bb3d5f22b6f9958cdede3fc086c2"
+    }
+]

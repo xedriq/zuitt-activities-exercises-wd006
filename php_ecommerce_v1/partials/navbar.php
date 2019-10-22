@@ -29,7 +29,6 @@
           <li class="nav-item">
             <a class="nav-link"  href="./login.php">Log In</a>
           </li>
-         
         ';
       } elseif(isset($_SESSION['user']) && $_SESSION['user']['role_id'] == 1) {
         echo '
@@ -49,10 +48,6 @@
          echo '
           <li class="nav-item">
             <p class="nav-link">Welcome, <span classs="font-weight-bold">'. $_SESSION['user']['first_name'] . '</span>!</p>
-          </li>
-
-           <li class="nav-item">
-            <a class="nav-link"  href="./cart.php">My Cart</a>
           </li>
 
           <li class="nav-item">

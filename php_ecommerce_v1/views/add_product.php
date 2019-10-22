@@ -26,20 +26,10 @@
 							<input id="productName" type="text" name="productName" class="form-control" />
 						</div>
 
-
 						<div class="form-group">
 							<label for="description" class="label-text">Description:</label>
 							<input id="description" type="text" name="description" class="form-control" />
 						</div>
-						
-						<div class="form-group">
-					      <label for="category">Category: </label>
-					      <select class="form-control" id="category" name="category">
-					        <option value="1">Hats</option>
-					        <option value="2">Tees</option>
-					        <option value="3">Hoodies</option>
-					      </select>
-					    </div>
 
 						<div class="form-group">
 							<label for="price" class="label-text">Price:</label>
